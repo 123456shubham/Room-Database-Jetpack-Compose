@@ -13,10 +13,13 @@ interface ContractDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertUser(contact: Contact)
+
     @Delete
     fun deleteUser(contact: Contact)
+
     @Query("SELECT * FROM Contact")
     fun getAllUsers(): List<Contact>
+
     @Update
     fun updateUser(contact: Contact)
 
