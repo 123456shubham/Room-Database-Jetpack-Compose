@@ -7,4 +7,7 @@ sealed class Routes {
 
     @Serializable
     object  HomePage
+
+    @Serializable
+    object AddContact
 }

@@ -12,15 +12,15 @@ import com.example.roomdatatoturial.data.entity.Contact
 interface ContractDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(contact: Contact)
+    suspend fun insertUser(contact: Contact)
 
     @Delete
-    fun deleteUser(contact: Contact)
+    suspend fun deleteUser(contact: Contact)
 
     @Query("SELECT * FROM Contact")
-    fun getAllUsers(): List<Contact>
+    suspend fun getAllUsers(): List<Contact>
 
     @Update
-    fun updateUser(contact: Contact)
+    suspend fun updateUser(contact: Contact)
 
 }

@@ -5,11 +5,11 @@ import com.example.roomdatatoturial.data.entity.Contact
 
 class Repository(val contractDAO: ContractDAO) {
 
-    fun insertContact(contact: Contact)=contractDAO.insertUser(contact)
+    suspend fun insertContact(contact: Contact)=contractDAO.insertUser(contact)
 
-    fun updateContact(contact: Contact)=contractDAO.updateUser(contact)
+    suspend fun updateContact(contact: Contact)=contractDAO.updateUser(contact)
 
-    fun deleteContact(contact: Contact)=contractDAO.deleteUser(contact)
+   suspend fun deleteContact(contact: Contact)=contractDAO.deleteUser(contact)
 
-    fun getAllContacts()=contractDAO.getAllUsers()
+    suspend fun getAllContacts()=contractDAO.getAllUsers()
 }
