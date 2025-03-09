@@ -19,7 +19,7 @@ interface ContractDAO {
     suspend fun deleteUser(contact: Contact)
 
     @Query("SELECT * FROM Contact")
-    suspend fun getAllUsers(): Flow<List<Contact>>
+     fun getAllUsers(): Flow<List<Contact>>
 
     @Update
     suspend fun updateUser(contact: Contact)

@@ -2,6 +2,7 @@ package com.example.roomdatatoturial.data.repo
 
 import com.example.roomdatatoturial.data.database.ContractDAO
 import com.example.roomdatatoturial.data.entity.Contact
+import kotlinx.coroutines.flow.onEach
 
 class Repository(val contractDAO: ContractDAO) {
 
@@ -11,5 +12,5 @@ class Repository(val contractDAO: ContractDAO) {
 
    suspend fun deleteContact(contact: Contact)=contractDAO.deleteUser(contact)
 
-    suspend fun getAllContacts()=contractDAO.getAllUsers()
+     fun getAllContacts()=contractDAO.getAllUsers().onEach { contacts ->  }
 }

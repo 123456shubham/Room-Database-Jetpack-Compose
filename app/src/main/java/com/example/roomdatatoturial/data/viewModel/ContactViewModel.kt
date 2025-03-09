@@ -21,13 +21,13 @@ class ContactViewModel @Inject constructor(val repository: Repository):ViewModel
     val allContact=repository.getAllContacts().stateIn(
         viewModelScope,
         started = SharingStarted.WhileSubscribed(),
-        emptyList()
+       initialValue =  emptyList<Contact>()
     )
 
     var state= combine(_state,allContact){
         state,allContact->
         state.copy(allContact = allContact)
-    }
+    }.stateIn( viewModelScope, SharingStarted.WhileSubscribed(5000), initialValue =  AppResponse())
 //     var state=_state.asStateFlow()
 
     fun insertContact(){

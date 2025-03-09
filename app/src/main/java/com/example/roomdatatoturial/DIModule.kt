@@ -1,7 +1,6 @@
 package com.example.roomdatatoturial
 
 import android.app.Application
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.room.Room
 import com.example.roomdatatoturial.data.database.ContactDatabase
 import com.example.roomdatatoturial.data.repo.Repository
