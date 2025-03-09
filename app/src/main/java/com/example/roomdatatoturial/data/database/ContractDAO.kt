@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.example.roomdatatoturial.data.entity.Contact
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ContractDAO {
@@ -18,7 +19,7 @@ interface ContractDAO {
     suspend fun deleteUser(contact: Contact)
 
     @Query("SELECT * FROM Contact")
-    suspend fun getAllUsers(): List<Contact>
+    suspend fun getAllUsers(): Flow<List<Contact>>
 
     @Update
     suspend fun updateUser(contact: Contact)

@@ -4,7 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import com.example.roomdatatoturial.data.entity.Contact
 
- class AppResponse(
+  class AppResponse(
     var loading:Boolean=false,
     var allContact:List<Contact>  =emptyList<Contact>(),
     var success:Boolean=false,

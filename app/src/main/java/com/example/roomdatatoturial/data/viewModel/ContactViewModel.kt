@@ -7,7 +7,10 @@ import com.example.roomdatatoturial.data.repo.Repository
 import com.example.roomdatatoturial.data.response.AppResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,7 +18,17 @@ import javax.inject.Inject
 class ContactViewModel @Inject constructor(val repository: Repository):ViewModel() {
 
     private val _state= MutableStateFlow<AppResponse>(AppResponse())
-     var state=_state.asStateFlow()
+    val allContact=repository.getAllContacts().stateIn(
+        viewModelScope,
+        started = SharingStarted.WhileSubscribed(),
+        emptyList()
+    )
+
+    var state= combine(_state,allContact){
+        state,allContact->
+        state.copy(allContact = allContact)
+    }
+//     var state=_state.asStateFlow()
 
     fun insertContact(){
         val contact= Contact(

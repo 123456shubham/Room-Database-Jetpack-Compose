@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializer
 sealed class Routes {
 
     @Serializable
-    object  HomePage
+    object  HomeScreenUI
 
     @Serializable
     object AddContact

@@ -15,6 +15,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.roomdatatoturial.data.viewModel.ContactViewModel
 import com.example.roomdatatoturial.presentation.screen.AddContact
+import com.example.roomdatatoturial.presentation.screen.HomeScreenUI
 
 
 @Composable
@@ -22,13 +23,9 @@ fun AppNavigation (modifier: Modifier,contactViewModel: ContactViewModel=hiltVie
 
  val navController= rememberNavController()
  val appState=contactViewModel.state.collectAsState()
- NavHost(navController = navController, startDestination = Routes.HomePage){
-  composable<Routes.HomePage>{
-   Box(modifier.fillMaxSize().padding(50.dp)){
-    Button(onClick = { navController.navigate(Routes.AddContact) }) {
-     Text(text = "Go to Add Contact")
-    }
-   }
+ NavHost(navController = navController, startDestination = Routes.HomeScreenUI){
+  composable<Routes.HomeScreenUI>{
+   HomeScreenUI(modifier,state=appState.value, viewModel = contactViewModel,navController)
   }
 
    composable<Routes.AddContact> {
