@@ -42,5 +42,24 @@ class ContactViewModel @Inject constructor(val repository: Repository):ViewModel
         state.value.name.value=""
         state.value.email.value=""
         state.value.mobileNumber.value=""
+        state.value.id.value=0
+    }
+
+    fun deleteContact(){
+        val contact= Contact(
+            id = state.value.id.value,
+            name = state.value.name.value,
+            email = state.value.email.value,
+            phone = state.value.mobileNumber.value
+        )
+        viewModelScope.launch {
+            repository.deleteContact(contact)
+
+        }
+        state.value.name.value=""
+        state.value.email.value=""
+        state.value.mobileNumber.value=""
+        state.value.id.value=0
+
     }
 }
