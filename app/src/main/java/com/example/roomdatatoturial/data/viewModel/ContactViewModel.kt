@@ -32,6 +32,7 @@ class ContactViewModel @Inject constructor(val repository: Repository):ViewModel
 
     fun insertContact(){
         val contact= Contact(
+            id = state.value.id.value,
             name = state.value.name.value,
             email = state.value.email.value,
             phone = state.value.mobileNumber.value
