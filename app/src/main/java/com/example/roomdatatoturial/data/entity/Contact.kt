@@ -1,7 +1,9 @@
 package com.example.roomdatatoturial.data.entity
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity
 data class Contact(
@@ -10,5 +12,7 @@ data class Contact(
     var name:String="",
     var email:String="",
     var phone:String="",
+    @ColumnInfo(name="createdAt",defaultValue = "0")
+    var createdAt:Long=System.currentTimeMillis()
 
 )

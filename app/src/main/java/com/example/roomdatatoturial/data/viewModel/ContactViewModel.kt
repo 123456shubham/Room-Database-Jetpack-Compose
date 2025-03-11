@@ -35,7 +35,8 @@ class ContactViewModel @Inject constructor(val repository: Repository):ViewModel
             id = state.value.id.value,
             name = state.value.name.value,
             email = state.value.email.value,
-            phone = state.value.mobileNumber.value
+            phone = state.value.mobileNumber.value,
+            createdAt = System.currentTimeMillis()
         )
         viewModelScope.launch {
             repository.insertContact(contact)
@@ -51,7 +52,8 @@ class ContactViewModel @Inject constructor(val repository: Repository):ViewModel
             id = state.value.id.value,
             name = state.value.name.value,
             email = state.value.email.value,
-            phone = state.value.mobileNumber.value
+            phone = state.value.mobileNumber.value,
+            createdAt = System.currentTimeMillis()
         )
         viewModelScope.launch {
             repository.deleteContact(contact)

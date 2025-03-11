@@ -75,7 +75,13 @@ fun ContactUI(contact: Contact,viewModel: ContactViewModel,navController: NavCon
         Text("Email: ${contact.email}", fontSize = 18.sp, fontWeight = FontWeight.Bold, modifier = Modifier.padding(10.dp))
 
         Row (modifier = Modifier.fillMaxWidth().padding(10.dp)){
-            Icon(Icons.Default.Delete,contentDescription = null, modifier = Modifier.padding(10.dp).clickable {  viewModel.deleteContact()})
+            Icon(Icons.Default.Delete,contentDescription = null, modifier = Modifier.padding(10.dp)
+                .clickable {
+                    viewModel.state.value.name.value=contact.name
+                    viewModel.state.value.email.value=contact.email
+                    viewModel.state.value.mobileNumber.value=contact.phone
+                    viewModel.state.value.id.value=contact.id
+                    viewModel.deleteContact()})
         }
     }
 
