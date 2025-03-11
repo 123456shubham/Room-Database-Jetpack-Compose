@@ -11,8 +11,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.roomdatatoturial.presentation.navigation.AppNavigation
 import com.example.roomdatatoturial.ui.theme.RoomDataToturialTheme
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +24,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             RoomDataToturialTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    AppNavigation(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
